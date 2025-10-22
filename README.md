@@ -40,3 +40,39 @@ When you run your `init("hdRepo")`:
   > “You’re now on the master branch.”
 ---
 
+---
+
+## 🧱 Git Index (Staging Area)
+
+The **Git Index**, also called the **staging area**, is a file (`.git/index`) that tracks the files you want to include in your next commit.
+
+It’s like a **temporary list** that tells Git:
+> “These are the files I’m preparing to commit.”
+
+---
+
+### 🧩 How It Works
+
+- The index is stored in a **custom binary format** (not plain text).
+- It contains information like:
+  - File name (path)
+  - File size
+  - Modification time
+  - SHA-1 hash (unique fingerprint of file)
+- The index always lists **all files in the current tree**, not just the newly added ones.
+
+---
+---
+
+### 🧩 Explanation (Simplified)
+
+| Concept         | Meaning                                                                 |
+| ---------------- | ----------------------------------------------------------------------- |
+| `.git/index`     | A **binary file** that stores info about files staged for commit        |
+| `struct.unpack()` | Reads **binary data** into readable Python values                      |
+| `b'DIRC'`        | The **signature** that identifies this file as a Git index              |
+| `num_entries`    | The total number of files being tracked                                 |
+| `try / except`   | Prevents crashes if `.git/index` file doesn’t exist                     |
+| `assert`         | Double-checks that the file structure is **valid**                      |
+
+---
